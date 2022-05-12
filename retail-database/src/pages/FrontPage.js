@@ -1,8 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./FrontPage.css";
 
 export default function FrontPage() {
-  const location = useLocation();
+
   return (
     <div className="App">
       <header className="App-header">
