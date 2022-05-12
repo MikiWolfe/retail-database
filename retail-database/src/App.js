@@ -1,16 +1,15 @@
-
-import './App.css';
+import {Routes, Route } from "react-router-dom"
+import FrontPage from "./pages/FrontPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-     
-    <h1> Welcome to the online internet database </h1>
- 
-          <button> ENTER IF YOU DARE </button>
-      </header>
-    </div>
+    <>
+ <Routes > 
+    <Route path ='/' element={<FrontPage />}/>
+      <Route path ='/homepage' element= {<HomePage />}/>
+  </Routes>
+  </>
   );
 }
 
