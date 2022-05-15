@@ -12,10 +12,17 @@ Product.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    product_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    brand: {
+      type: DataTypes.STRING,
+    },
+    category:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    }, 
     price: {
       type: DataTypes.DECIMAL,
       allowNull: false,
@@ -31,19 +38,14 @@ Product.init(
         isNumeric: true,
       },
     },
-    description: {
-      type: DataTypes.TEXT,
-    },
-    brand: {
-      type: DataTypes.STRING,
-    },
-    category_id: {
-      type: DataTypes.INTEGER,
-      reference: {
-        model: "category",
-        key: "id",
-      },
-    },
+
+    // category_id: {
+    //   type: DataTypes.INTEGER,
+    //   reference: {
+    //     model: "category",
+    //     key: "id",
+    //   },
+    // },
   },
   {
     sequelize,
