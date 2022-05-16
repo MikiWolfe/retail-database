@@ -1,21 +1,10 @@
 const router = require("express").Router();
-const { Product, Category } = require("../../models");
+const { Product } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
     const products = await Product.findAll({
-      attributes: [
-        "id",
-        "product_name",
-        "price",
-        "quantity",
-        "description",
-        "brand",
-      ],
-      include: {
-        module: Category,
-        attributes: ["category_name"],
-      },
+      attributes: ["id", "name", "brand", "category", "price", "quantity"],
     });
     res.status(200).json(products);
   } catch (err) {
@@ -29,18 +18,7 @@ router.get("/:id", async (req, res) => {
       where: {
         id: res.params.id,
       },
-      attributes: [
-        "id",
-        "product_name",
-        "price",
-        "quantity",
-        "description",
-        "brand",
-      ],
-      include: {
-        module: Category,
-        attributes: ["category_name"],
-      },
+      attributes: ["id", "name", "brand", "category", "price", "quantity"],
     });
     if (!product) {
       res.status(404).json({ message: "No product found with this ID" });
@@ -52,15 +30,14 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/create-product", async (req, res) => {
   try {
-    const productCreate = await Product.creat({
-      product_name: req.body.product_name,
-      price: req.body.price,
-      quantity: req.body.quantity,
-      description: req.body.description,
+    const productCreate = await Product.create({
+      name: req.body.name,
       brand: req.body.brand,
       category: req.body.category_name,
+      price: req.body.price,
+      quantity: req.body.quantity,
     });
     res.status(200).json(productCreate);
   } catch (err) {
@@ -68,7 +45,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("./:id", async (req, res) => {
+router.put("/update-product/:id", async (req, res) => {
   try {
     const productUpdate = await Product.update(req.body, {
       where: {
@@ -85,7 +62,7 @@ router.put("./:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/delete-product/:id", async (req, res) => {
   try {
     const productDelete = await Product.destroy({
       where: {
