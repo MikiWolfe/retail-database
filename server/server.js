@@ -1,28 +1,46 @@
-const path = require("path");
-const cors = require("cors");
-const express = require("express");
+
+let express = require('express');
+let mongoose = require('mongoose');
+let cors = require('cors');
+let bodyParser = require('body-parser');
+let dbConfig = require('./database/db');
+  
+// Express Route
+const productRoute = require('./routes/product.route')
+  
+  
+// Connecting MongoDB Database
+mongoose.Promise = global.Promise;
+mongoose.connect(dbConfig.db).then(() => {
+  console.log('Database successfully connected!')
+},
+  error => {
+    console.log('Could not connect to database : ' + error)
+  }
+)
+  
 const app = express();
-const routes = require('./routes');
-const sequelize = require("./config/connection");
-
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cors());
-
-const PORT = process.env.PORT || 4000;
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-
-
-app.use(routes);
-
-app.use("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+app.use('/product', productRoute)
+  
+  
+// PORT
+const port = process.env.PORT || 4000;
+const server = app.listen(port, () => {
+  console.log('Connected to port ' + port)
+})
+  
+// 404 Error
+app.use((req, res, next) => {
+  res.status(404).send('Error 404!')
 });
-
-sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () =>
-    console.log(`Now listening at http://localhost:${PORT}`)
-  );
+  
+app.use(function (err, req, res, next) {
+  console.error(err.message);
+  if (!err.statusCode) err.statusCode = 500;
+  res.status(err.statusCode).send(err.message);
 });
