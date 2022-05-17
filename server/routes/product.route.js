@@ -4,8 +4,10 @@ const router = express.Router();
 
 let productSchema = require("../models/Product");
 
+
 router.get("/", (req, res) => {
   productSchema.find((error, data) => {
+ 
     if (error) {
       return next(error);
     } else {

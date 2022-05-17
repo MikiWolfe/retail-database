@@ -1,23 +1,11 @@
 
 let express = require('express');
-let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
-let dbConfig = require('./database/db');
+let db = require('./database/db');
   
 // Express Route
 const productRoute = require('./routes/product.route')
-  
-  
-// Connecting MongoDB Database
-mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.db).then(() => {
-  console.log('Database successfully connected!')
-},
-  error => {
-    console.log('Could not connect to database : ' + error)
-  }
-)
   
 const app = express();
 app.use(bodyParser.json());
@@ -29,10 +17,12 @@ app.use('/product', productRoute)
   
   
 // PORT
-const port = process.env.PORT || 4000;
-const server = app.listen(port, () => {
-  console.log('Connected to port ' + port)
-})
+const PORT = process.env.PORT || 4000;
+
+db.once('open', () => {
+  app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
+});
+
   
 // 404 Error
 app.use((req, res, next) => {

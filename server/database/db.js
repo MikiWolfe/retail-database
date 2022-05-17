@@ -1,4 +1,11 @@
+const mongoose = require('mongoose');
 
-module.exports = {
-    db: 'mongodb://localhost:27017/retaildb'
-  };
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/retail_db', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+
+});
+
+module.exports = mongoose.connection;
+
+
