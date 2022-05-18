@@ -70,7 +70,7 @@ router.delete("/delete-product/:id", (req, res) => {
     if (error) {
       return error;
     } else {
-      res.status(200).json(data);
+      res.status(200);
       console.log(data, "Product deleted!");
     }
   });
