@@ -21,10 +21,10 @@ const AddProduct = () => {
       )
       .then((res) => {
         if (res.status === 200) {
-          alert("Product successfully added!");
           
+          alert("Product successfully added!");
         } else Promise.reject();
-        window.location.reload();
+
         // const { name, brand, category, price, quantity } = res.data;
         // setFormValues({ name, brand, category, price, quantity });
       })
@@ -38,13 +38,14 @@ const AddProduct = () => {
         "Content-Type": "application/json",
       },
     })
-    .then(({ data }) => {
-      setFormValues(data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}, []);
+      .then(({ data }) => {
+        setFormValues(data);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div>
