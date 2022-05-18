@@ -15,10 +15,9 @@ const AddProduct = () => {
     quantity: "",
   });
 
- const navigate  = useNavigate()
+  const navigate = useNavigate();
 
-  const onSubmit = (productObject) => {
-     
+  const onClick = (productObject) => {
     axios
       .post(
         "https://retailer-database.herokuapp.com/product/create-product",
@@ -28,13 +27,13 @@ const AddProduct = () => {
         if (res.status === 200) {
           alert("Product successfully added!");
         } else Promise.reject();
-        navigate('/homepage');
-
       })
       .catch((err) => console.log(err));
   };
-
-
+  const onSubmit = () => {
+    onClick();
+    navigate("/homepage");
+  };
   return (
     <div>
       <Header />
