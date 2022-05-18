@@ -53,9 +53,13 @@ None
 
 GitHub profile: https://github.com/MikiWolfe
 
+
+
 ### Link to Deployed Site
 Link: https://retail-database.mikaylabruce.repl.co/ & https://retailer-database.herokuapp.com/
 
-Link to the repo: https://github.com/MikiWolfe/retail-database
+Link to the Github repo: https://github.com/MikiWolfe/retail-database
+
+Link to Replit Repo: https://replit.com/@MikaylaBruce/retail-database#.replit
 
 
