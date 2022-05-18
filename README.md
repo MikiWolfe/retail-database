@@ -55,7 +55,7 @@ GitHub profile: https://github.com/MikiWolfe
 
 ### Link to Deployed Site
 
-Link to the repo: https://github.com/MikiWolfe/Internet-Retail-Database
+Link to the repo: https://github.com/MikiWolfe/retail-database
 
 ### Image of application
 
