@@ -21,9 +21,9 @@ const ProductTableRow = (props) => {
       .catch((err) => alert("Something went wrong"));
     window.location.reload();
   };
-  function onClick() {
+  const onClick = () =>{
     deleteProduct();
-    navigate('/product');
+    navigate('/homepage');
   }
   return (
     <tr>
