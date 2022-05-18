@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NavBar from "./bars/NavBar";
 import Header from "./Header";
@@ -30,6 +30,21 @@ const AddProduct = () => {
       })
       .catch((err) => console.log(err));
   };
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: `https://retailer-database.herokuapp.com/product/}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then(({ data }) => {
+      setFormValues(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}, []);
 
   return (
     <div>
