@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import NavBar from "./bars/NavBar";
-import Header from './Header'
+import Header from "./Header";
 import ProductForm from "./ProductForm";
 
 const EditProduct = (props) => {
   const { id } = useParams();
-  console.log(id)
+  console.log(id);
   console.log(props);
   const [formValues, setFormValues] = useState({
     name: "",
@@ -30,7 +30,7 @@ const EditProduct = (props) => {
         console.log(res);
         if (res.status === 200) {
           alert("Product successfully updated");
-          console.log(res)
+          console.log(res);
         } else Promise.reject();
       })
       .catch((err) => alert(err));
@@ -45,7 +45,6 @@ const EditProduct = (props) => {
       },
     })
       .then((res) => {
-        
         const { name, brand, category, price, quantity } = res.data;
         setFormValues({ name, brand, category, price, quantity });
       })
@@ -54,8 +53,8 @@ const EditProduct = (props) => {
 
   return (
     <div>
-       <Header/>
-      <NavBar/>
+      <Header />
+      <NavBar />
       <ProductForm
         initialValues={formValues}
         onSubmit={onSubmit}
