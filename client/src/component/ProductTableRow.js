@@ -19,7 +19,7 @@ const ProductTableRow = (props) => {
         } else Promise.reject();
       })
       .catch((err) => alert("Something went wrong"));
-    window.location.reload();
+    // window.location.reload();
   };
   const onClick = () =>{
     deleteProduct();

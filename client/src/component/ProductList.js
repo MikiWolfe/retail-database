@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import  Table  from "react-bootstrap/Table";
+import Table from "react-bootstrap/Table";
 import ProductTableRow from "./ProductTableRow";
 import NavBar from "./bars/NavBar";
-import Header from './Header'
+import Header from "./Header";
 
 const ProductList = () => {
   const [product, setProduct] = useState([]);
@@ -31,27 +31,25 @@ const ProductList = () => {
   };
 
   return (
-
     <div>
-      <Header/>
-      <NavBar/>
+      <Header />
+      <NavBar />
       <div className="table-wrapper">
-    <Table striped bordered hover responsive="sm">
-      <thead>
-        <tr className="th">
-          <th >ID: </th>
-          <th className="th">Name: </th>
-          <th className="th">Brand: </th>
-          <th className="th">Category: </th>
-          <th>Price: </th>
-          <th>Quantity: </th>
-        </tr>
-      </thead>
-      <tbody>{DataTable()}</tbody>
-    </Table>
+        <Table striped bordered hover responsive="sm">
+          <thead>
+            <tr>
+              <th>ID: </th>
+              <th>Name: </th>
+              <th>Brand: </th>
+              <th>Category: </th>
+              <th>Price: </th>
+              <th>Quantity: </th>
+            </tr>
+          </thead>
+          <tbody>{DataTable()}</tbody>
+        </Table>
+      </div>
     </div>
-</div>
-
   );
 };
 

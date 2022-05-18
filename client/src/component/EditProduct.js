@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavBar from "./bars/NavBar";
 import Header from "./Header";
@@ -15,6 +15,10 @@ const EditProduct = (props) => {
     price: "",
     quantity: "",
   });
+
+  const navigate  = useNavigate()
+
+
   const onSubmit = (productObject) => {
     axios({
       method: "put",
@@ -30,19 +34,20 @@ const EditProduct = (props) => {
         } else Promise.reject();
       })
       .catch((err) => alert(err));
-  };
-
-  useEffect(() => {
-    axios({
-      method: "get",
-      url: `https://retailer-database.herokuapp.com/product/update-product/${id}`,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    };
+    
+    useEffect(() => {
+      axios({
+        method: "get",
+        url: `https://retailer-database.herokuapp.com/product/update-product/${id}`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((res) => {
         const { name, brand, category, price, quantity } = res.data;
         setFormValues({ name, brand, category, price, quantity });
+        navigate('/homepage');
       })
       .catch((err) => console.log(err));
   }, []);

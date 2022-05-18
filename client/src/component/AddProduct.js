@@ -14,8 +14,8 @@ const AddProduct = () => {
     price: "",
     quantity: "",
   });
- const navigate  = useNavigate()
 
+ const navigate  = useNavigate()
 
   const onSubmit = (productObject) => {
      
