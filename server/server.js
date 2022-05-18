@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cors());
+
 app.use('/product', productRoute)
 
 if (process.env.NODE_ENV === "production") {

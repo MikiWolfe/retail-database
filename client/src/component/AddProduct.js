@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import NavBar from "./bars/NavBar";
-import Header from "./Header";
+import Header from './Header'
 import ProductForm from "./ProductForm";
 
 const AddProduct = () => {
@@ -14,33 +14,32 @@ const AddProduct = () => {
   });
 
   const onSubmit = (productObject) => {
-    axios({
-      method: "post",
-      url: "http://localhost:4000/product/create-product",
-      data: productObject,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (res.status === 200) alert("Product successfully added");
-        else Promise.reject();
-        window.location.reload();
+    axios
+      .post("http://localhost:4000/product/create-product", productObject)
+      .then(res => {
+        if (res.status === 200) {
+          alert("Product successfully added!");
+          console.log(res);
+          window.location.reload()
+        } else Promise.reject();
+        const { name, brand, category, price, quantity } = res.data;
+        setFormValues({ name, brand, category, price, quantity });
+
       })
-      .catch((err) => alert("Something went wrong"));
-  };
+      .catch((err) => console.log(err));
+    };
 
   return (
     <div>
-      <Header />
-      <NavBar />
-      <ProductForm
-        initialValues={formValues}
-        onSubmit={onSubmit}
-        enableReinitialize
-      >
-        Add Product
-      </ProductForm>
+      <Header/>
+      <NavBar/>
+    <ProductForm
+      initialValues={formValues}
+      onSubmit={onSubmit}
+      enableReinitialize
+    >
+      Add Product
+    </ProductForm>
     </div>
   );
 };
