@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NavBar from "./bars/NavBar";
 import Header from "./Header";
 import ProductForm from "./ProductForm";
-import { useNavigate } from "react-router-dom";
-// import Button from "react-bootstrap/esm/Button";
+import Button from "react-bootstrap/esm/Button";
 
 const AddProduct = () => {
   const [formValues, setFormValues] = useState({
@@ -15,9 +14,7 @@ const AddProduct = () => {
     quantity: "",
   });
 
-  const navigate = useNavigate();
-
-  const onClick = (productObject) => {
+  const onSubmit = (productObject) => {
     axios
       .post(
         "https://retailer-database.herokuapp.com/product/create-product",
@@ -27,13 +24,11 @@ const AddProduct = () => {
         if (res.status === 200) {
           alert("Product successfully added!");
         } else Promise.reject();
+        
       })
       .catch((err) => console.log(err));
   };
-  const onSubmit = () => {
-    onClick();
-    navigate("/homepage");
-  };
+
   return (
     <div>
       <Header />
@@ -45,6 +40,10 @@ const AddProduct = () => {
       >
         Add Product
       </ProductForm>
+      <Button variant="primary" size="lg" block="block" type="submit">
+        {" "}
+        Add another product
+      </Button>
     </div>
   );
 };
