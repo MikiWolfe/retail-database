@@ -33,7 +33,7 @@ const AddProduct = () => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `https://retailer-database.herokuapp.com/product/}`,
+      url: `https://retailer-database.herokuapp.com/product/`,
       headers: {
         "Content-Type": "application/json",
       },

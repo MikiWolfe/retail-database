@@ -15,9 +15,7 @@ export default function NavBar() {
         Full Inventory
       </Link>
 
-      <Link to="/search-product" className="nav-a">
-        Search for Product
-      </Link>
+     
     </div>
   );
 }
