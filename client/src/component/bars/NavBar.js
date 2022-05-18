@@ -11,7 +11,7 @@ export default function NavBar() {
         Add Product
       </Link>
 
-      <Link to="/product-list" className="nav-a">
+      <Link to="/product" className="nav-a">
         Full Inventory
       </Link>
 
