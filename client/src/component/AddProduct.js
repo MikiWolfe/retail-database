@@ -3,6 +3,7 @@ import axios from "axios";
 import NavBar from "./bars/NavBar";
 import Header from "./Header";
 import ProductForm from "./ProductForm";
+import Button from "react-bootstrap/esm/Button";
 
 const AddProduct = () => {
   const [formValues, setFormValues] = useState({
@@ -21,31 +22,12 @@ const AddProduct = () => {
       )
       .then((res) => {
         if (res.status === 200) {
-          
           alert("Product successfully added!");
         } else Promise.reject();
-
-        // const { name, brand, category, price, quantity } = res.data;
-        // setFormValues({ name, brand, category, price, quantity });
+        window.location.reload()
       })
       .catch((err) => console.log(err));
   };
-  useEffect(() => {
-    axios({
-      method: "get",
-      url: `https://retailer-database.herokuapp.com/create-product/`,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(({ data }) => {
-        setFormValues(data);
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
   return (
     <div>
@@ -58,6 +40,10 @@ const AddProduct = () => {
       >
         Add Product
       </ProductForm>
+      <Button variant="primary" size="lg" block="block" type="submit">
+        {" "}
+        Add another product
+      </Button>
     </div>
   );
 };
