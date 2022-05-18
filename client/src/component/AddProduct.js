@@ -24,7 +24,6 @@ const AddProduct = () => {
         if (res.status === 200) {
           alert("Product successfully added!");
         } else Promise.reject();
-        
       })
       .catch((err) => console.log(err));
   };
@@ -40,10 +39,6 @@ const AddProduct = () => {
       >
         Add Product
       </ProductForm>
-      <Button variant="primary" size="lg" block="block" type="submit">
-        {" "}
-        Add another product
-      </Button>
     </div>
   );
 };
