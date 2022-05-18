@@ -47,11 +47,11 @@ const EditProduct = (props) => {
       .then((res) => {
         const { name, brand, category, price, quantity } = res.data;
         setFormValues({ name, brand, category, price, quantity });
-        navigate('/homepage');
       })
       .catch((err) => console.log(err));
-  }, []);
-
+      navigate('/homepage');
+    }, []);
+    
   return (
     <div>
       <Header />
