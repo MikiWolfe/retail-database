@@ -8,17 +8,30 @@ const ProductTableRow = (props) => {
   const { _id, name, brand, category, price, quantity } = props.obj;
   const navigate  = useNavigate();
 
+  // function confirmAction() {
+  //   let confirmAction = confirm(message?: "string"): boolean;
+  //   if (confirmAction) {
+  //     alert("Action successfully executed");
+  //   } else {
+  //     alert("Action canceled");
+  //   }
+  // }
+
+
+
+
   const deleteProduct = () => {
+
     axios
       .delete(
         `https://retailer-database.herokuapp.com/product/delete-product/${_id}`
       )
       .then((res) => {
         if (res.status === 200) {
-          alert("Product successfully deleted");
+          alert("Are you sure you want to delete this product?");
         } else Promise.reject();
       })
-      .catch((err) => alert("Something went wrong"));
+      .catch((err) => console.log(err));
     // window.location.reload();
   };
   const onClick = () =>{
