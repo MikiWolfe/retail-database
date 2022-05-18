@@ -25,6 +25,17 @@ router.post("/create-product", (req, res) => {
   });
 });
 
+router.get("/create-product", (req, res) => {
+  productSchema.findOne((error, data) => {
+    if (error) {
+      return error;
+    } else {
+      console.log(data);
+      res.json(data);
+    }
+  });
+});
+
 router.route("/update-product/:id")
 .get((req, res) => {
   productSchema.findById(
