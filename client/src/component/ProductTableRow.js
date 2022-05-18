@@ -9,7 +9,7 @@ const ProductTableRow = (props) => {
 
   const deleteProduct = () => {
     axios
-      .delete(`http://localhost:4000/product/delete-product/${_id}`)
+      .delete(`https://retailer-database.herokuapp.com/product/delete-product/${_id}`)
       .then((res) => {
         if (res.status === 200) {
           alert("Product successfully deleted");

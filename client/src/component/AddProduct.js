@@ -15,7 +15,7 @@ const AddProduct = () => {
 
   const onSubmit = (productObject) => {
     axios
-      .post("http://localhost:4000/product/create-product", productObject)
+      .post("https://retailer-database.herokuapp.com/product/create-product", productObject)
       .then(res => {
         if (res.status === 200) {
           alert("Product successfully added!");

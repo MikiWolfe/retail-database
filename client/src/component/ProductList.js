@@ -10,7 +10,7 @@ const ProductList = () => {
   useEffect(() => {
     axios({
       method: "get",
-      url: "http://localhost:4000/product/",
+      url: "https://retailer-database.herokuapp.com/product/",
       headers: {
         "Content-Type": "application/json",
       },

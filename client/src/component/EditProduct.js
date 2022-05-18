@@ -20,7 +20,7 @@ const EditProduct = (props) => {
     console.log(productObject);
     axios({
       method: "put",
-      url: `http://localhost:4000/product/update-product/${id}`,
+      url: `https://retailer-database.herokuapp.com/product/update-product/${id}`,
       data: productObject,
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const EditProduct = (props) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `http://localhost:4000/product/update-product/${id}`,
+      url: `https://retailer-database.herokuapp.com/product/update-product/${id}`,
       headers: {
         "Content-Type": "application/json",
       },
