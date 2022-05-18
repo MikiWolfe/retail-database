@@ -7,8 +7,7 @@ import ProductForm from "./ProductForm";
 
 const EditProduct = (props) => {
   const { id } = useParams();
-  console.log(id);
-  console.log(props);
+
   const [formValues, setFormValues] = useState({
     name: "",
     brand: "",
@@ -17,7 +16,6 @@ const EditProduct = (props) => {
     quantity: "",
   });
   const onSubmit = (productObject) => {
-    console.log(productObject);
     axios({
       method: "put",
       url: `https://retailer-database.herokuapp.com/product/update-product/${id}`,
@@ -27,10 +25,8 @@ const EditProduct = (props) => {
       },
     })
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           alert("Product successfully updated");
-          console.log(res);
         } else Promise.reject();
       })
       .catch((err) => alert(err));

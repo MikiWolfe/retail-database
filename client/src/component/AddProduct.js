@@ -22,13 +22,13 @@ const AddProduct = () => {
       .then((res) => {
         if (res.status === 200) {
           alert("Product successfully added!");
-          console.log(res);
+          
         } else Promise.reject();
-        const { name, brand, category, price, quantity } = res.data;
-        setFormValues({ name, brand, category, price, quantity });
+        window.location.reload();
+        // const { name, brand, category, price, quantity } = res.data;
+        // setFormValues({ name, brand, category, price, quantity });
       })
       .catch((err) => console.log(err));
-      window.location.reload();
   };
 
   return (
