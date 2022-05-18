@@ -65,14 +65,13 @@ router.route("/update-product/:id")
   );
 });
 
-
-
 router.delete("/delete-product/:id", (req, res) => {
   productSchema.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return error;
     } else {
       res.status(200).json(data);
+      console.log(data, "Product deleted!");
     }
   });
 });

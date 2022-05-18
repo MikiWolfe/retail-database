@@ -4,6 +4,7 @@ import  Table  from "react-bootstrap/Table";
 import ProductTableRow from "./ProductTableRow";
 import NavBar from "./bars/NavBar";
 import Header from './Header'
+
 const ProductList = () => {
   const [product, setProduct] = useState([]);
 
