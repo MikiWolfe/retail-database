@@ -2,11 +2,11 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ProductTableRow = (props) => {
   const { _id, name, brand, category, price, quantity } = props.obj;
-  const history = useHistory();
+  const navigate  = useNavigate();
 
   const deleteProduct = () => {
     axios
@@ -23,7 +23,7 @@ const ProductTableRow = (props) => {
   };
   function onClick() {
     deleteProduct();
-    history.push("/product");
+    navigate('/product');
   }
   return (
     <tr>
