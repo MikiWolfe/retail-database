@@ -18,7 +18,7 @@ const ProductTableRow = (props) => {
   // }
 
   const deleteProduct = () => {
-    console.log(props.obj);
+    window.localStorage.setItem(props.obj);
     axios
       .delete(
         `https://retailer-database.herokuapp.com/product/delete-product/${_id}`
@@ -33,7 +33,7 @@ const ProductTableRow = (props) => {
   };
   const onClick = () => {
     deleteProduct();
-    navigate("/product-list");
+
   };
   return (
     <tr>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 import NavBar from "./bars/NavBar";
 import Header from "./Header";
 import ProductForm from "./ProductForm";
@@ -26,6 +27,7 @@ const AddProduct = () => {
         } else Promise.reject();
       })
       .catch((err) => console.log(err));
+
   };
 
   return (
