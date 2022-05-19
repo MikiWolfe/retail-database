@@ -18,7 +18,8 @@ const ProductTableRow = (props) => {
       )
       .then((res) => {
         if (res.status === 200) {
-          alert("Are you sure you want to delete this product?");
+          console.log(res.status)
+          // alert("Are you sure you want to delete this product?");
         } else Promise.reject();
       })
       .catch((err) => console.log(err));
@@ -32,7 +33,7 @@ const ProductTableRow = (props) => {
       buttons: [
         {
           label: "Yes",
-          onClick: () => alert("Click Yes"),
+          onClick: () => deleteProduct(),
         },
         {
           label: "No",
@@ -42,9 +43,7 @@ const ProductTableRow = (props) => {
     });
   };
 
-  const onClick = () => {
-    deleteProduct();
-  };
+ 
   return (
     <tr>
       <td>{_id}</td>
