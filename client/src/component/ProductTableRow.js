@@ -37,7 +37,7 @@ const ProductTableRow = (props) => {
         },
         {
           label: "No",
-          onClick: () => alert("Click No"),
+          onClick: () => navigate('/product-list'),
         },
       ],
     });
