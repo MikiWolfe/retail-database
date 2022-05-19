@@ -1,24 +1,36 @@
 import React from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import { useNavigate } from "react-router-dom";
+
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const ProductTableRow = (props) => {
   const { _id, name, brand, category, price, quantity } = props.obj;
   const navigate = useNavigate();
 
-  // function confirmAction() {
-  //   let confirmAction = confirm(message?: "string"): boolean;
-  //   if (confirmAction) {
-  //     alert("Action successfully executed");
-  //   } else {
-  //     alert("Action canceled");
-  //   }
-  // }
+
+  
+  const submit = () => {
+    confirmAlert({
+      title: "Confirm to submit",
+      message: "Are you sure to do this.",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => alert("Click Yes"),
+        },
+        {
+          label: "No",
+          onClick: () => alert("Click No"),
+        },
+      ],
+    });
+  };
 
   const deleteProduct = () => {
-    window.localStorage.setItem('product', JSON.stringify(props.obj));
+    window.localStorage.setItem("product", JSON.stringify(props.obj));
     axios
       .delete(
         `https://retailer-database.herokuapp.com/product/delete-product/${_id}`
@@ -33,29 +45,33 @@ const ProductTableRow = (props) => {
   };
   const onClick = () => {
     deleteProduct();
-
   };
   return (
-    <tr>
-      <td>{_id}</td>
-      <td>{name}</td>
-      <td>{brand}</td>
-      <td>{category}</td>
-      <td>{price}</td>
-      <td>{quantity}</td>
-      <td>
-        <Link to={`/update-product/${_id}`}>
-          <Button variant="info" size="sm">
-            Edit{" "}
-          </Button>
-        </Link>
-        <p> OR </p>
+    <div>
+      <tr>
+        <td>{_id}</td>
+        <td>{name}</td>
+        <td>{brand}</td>
+        <td>{category}</td>
+        <td>{price}</td>
+        <td>{quantity}</td>
+        <td>
+          <Link to={`/update-product/${_id}`}>
+            <Button variant="info" size="sm">
+              Edit{" "}
+            </Button>
+          </Link>
+          <p> OR </p>
 
-        <Button onClick={onClick} size="sm" variant="danger">
-          Delete
-        </Button>
-      </td>
-    </tr>
+          <Button onClick={onClick} size="sm" variant="danger">
+            Delete
+          </Button>
+        </td>
+      </tr>
+      <div className="container">
+        <button onClick={submit}>Confirm dialog</button>
+      </div>
+    </div>
   );
 };
 
