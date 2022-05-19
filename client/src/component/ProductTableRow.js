@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const ProductTableRow = (props) => {
   const { _id, name, brand, category, price, quantity } = props.obj;
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
 
   // function confirmAction() {
   //   let confirmAction = confirm(message?: "string"): boolean;
@@ -17,11 +17,8 @@ const ProductTableRow = (props) => {
   //   }
   // }
 
-
-
-
   const deleteProduct = () => {
-
+    console.log(props.obj);
     axios
       .delete(
         `https://retailer-database.herokuapp.com/product/delete-product/${_id}`
@@ -34,10 +31,10 @@ const ProductTableRow = (props) => {
       .catch((err) => console.log(err));
     // window.location.reload();
   };
-  const onClick = () =>{
+  const onClick = () => {
     deleteProduct();
-    navigate('/product-list');
-  }
+    navigate("/product-list");
+  };
   return (
     <tr>
       <td>{_id}</td>
