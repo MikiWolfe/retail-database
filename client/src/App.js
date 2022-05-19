@@ -15,7 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<FrontPage />} />
         <Route path="/homepage" element={<HomePage />} />
-        <Route path="/product" element={<ProductList />} />
+        <Route path="/product-list" element={<ProductList />} />
         <Route path="/create-product" element={<AddProduct />} />
         <Route path="/update-product/:id" element={<EditProduct />} />
         <Route
