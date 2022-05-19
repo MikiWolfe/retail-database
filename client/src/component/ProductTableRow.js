@@ -36,7 +36,7 @@ const ProductTableRow = (props) => {
   };
   const onClick = () =>{
     deleteProduct();
-    navigate('/homepage');
+    navigate('/product-list');
   }
   return (
     <tr>
