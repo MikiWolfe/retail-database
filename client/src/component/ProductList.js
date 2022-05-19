@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
+import Button from 'react-bootstrap/Table'
 import ProductTableRow from "./ProductTableRow";
 import NavBar from "./bars/NavBar";
 import Header from "./Header";
@@ -49,6 +50,7 @@ const ProductList = () => {
           <tbody>{DataTable()}</tbody>
         </Table>
       </div>
+      <Button variant="warning"> Undo last Delete </Button>
     </div>
   );
 };
