@@ -23,6 +23,7 @@ const ProductTableRow = (props) => {
         } else Promise.reject();
       })
       .catch((err) => console.log(err));
+      navigate("/ho")
   };
 
   const onSubmit = () => {
