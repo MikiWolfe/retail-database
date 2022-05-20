@@ -51,7 +51,7 @@ const ProductTableRow = (props) => {
     <>
       <div className="container">{isLoading ? <Loading /> : ProductList}</div>
 
-      <tr>
+      <tr disabled={isLoading} >
         <td>{_id}</td>
         <td>{name}</td>
         <td>{brand}</td>
