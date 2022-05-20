@@ -10,7 +10,6 @@ const ProductForm = (props) => {
     category: Yup.string().required("Required"),
     price: Yup.number()
       .positive("Invalid  number")
-      .integer("Invalid  number")
       .required("Required"),
     quantity: Yup.number()
       .positive("Invalid number")

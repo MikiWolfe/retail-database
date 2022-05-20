@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -11,19 +12,16 @@ const ProductTableRow = (props) => {
 
   const navigate = useNavigate();
 
-  const deleteProduct = () => {
+  const deleteProduct = async () => {
     window.localStorage.setItem("product", JSON.stringify(props.obj));
-    axios
-      .delete(
+    try {
+      await axios.delete(
         `https://retailer-database.herokuapp.com/product/delete-product/${_id}`
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          console.log(res.status);
-        } else Promise.reject();
-      })
-      .catch((err) => console.log(err));
-      navigate("/ho")
+      );
+      console.log("Item successfully deleted.");
+    } catch (error) {
+      navigate("/homepage");
+    }
   };
 
   const onSubmit = () => {
@@ -58,6 +56,8 @@ const ProductTableRow = (props) => {
           </Button>
         </Link>
         <p> OR </p>
+        <Spinner animation="border" variant="success" />
+
         <div className="container">
           <Button onClick={onSubmit} size="sm" variant="danger">
             Delete

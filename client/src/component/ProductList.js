@@ -47,7 +47,7 @@ const ProductList = () => {
             button: [
               {
                 label: "Home",
-                onClick: () => navigate("./product-list"),
+                onClick: () => navigate("/product-list"),
               },
             ],
           });
