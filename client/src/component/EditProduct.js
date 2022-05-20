@@ -34,7 +34,7 @@ const EditProduct = (props) => {
         if (res.status === 200) {
           confirmAlert({
             title: "Product successfully updated!",
-            message: "Click here to go home",
+            message: "Click here to close",
             buttons: [
               {
                 label: "Yes",

@@ -47,7 +47,7 @@ const ProductList = () => {
             message: "Product successfully restored!",
             buttons: [
               {
-                label: "Home",
+                label: "Close",
                 onClick: () => navigate("/product-list"),
               },
             ],

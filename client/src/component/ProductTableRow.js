@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -10,16 +10,25 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 const ProductTableRow = (props) => {
   const { _id, name, brand, category, price, quantity } = props.obj;
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const deleteProduct = async () => {
     window.localStorage.setItem("product", JSON.stringify(props.obj));
+    setIsLoading(true);
     try {
       await axios.delete(
         `https://retailer-database.herokuapp.com/product/delete-product/${_id}`
       );
       console.log("Item successfully deleted.");
+      // setTimeout(() => {
+
+      //     setUsers(respose.data);
+      //     setIsLoading(false);
+      //   }, 3000);
     } catch (error) {
+      setIsLoading(false);
       navigate("/homepage");
     }
   };
@@ -56,10 +65,13 @@ const ProductTableRow = (props) => {
           </Button>
         </Link>
         <p> OR </p>
-        <Spinner animation="border" variant="success" />
-
         <div className="container">
-          <Button onClick={onSubmit} size="sm" variant="danger">
+          {isLoading ? (
+            <Spinner animation="border" variant="success" />
+          ) : (
+            ProductTableRow
+          )}
+          <Button onClick={onSubmit} disabled={isLoading} size="sm" variant="danger">
             Delete
           </Button>
         </div>
