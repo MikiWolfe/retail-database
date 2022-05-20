@@ -66,12 +66,12 @@ const ProductList = () => {
           </thead>
           <tbody>{DataTable()}</tbody>
         </Table>
-      </div>
       <div className = 'restore'>
         <Button  onClick={restore} variant="warning">
           {" "}
           Undo last Delete{" "}
         </Button>
+      </div>
       </div>
     </div>
   );
