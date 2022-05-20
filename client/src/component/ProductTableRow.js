@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Loading from "./Loading";
-
+import ProductList from "./ProductList";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
@@ -56,7 +56,7 @@ const ProductTableRow = (props) => {
           {isLoading ? (
             <Loading />
           ) : (
-            ProductTableRow
+            ProductList
           )} 
           </div>
     <tr>

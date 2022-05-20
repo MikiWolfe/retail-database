@@ -5,7 +5,7 @@ export default function Loading () {
     return (
         <div>
          
-              <p>Loading ...</p> <Spinner animation="border" variant="success" /> 
+              <p>Loading ... <Spinner animation="border" variant="success" /> </p>
         </div>
     )
 }
