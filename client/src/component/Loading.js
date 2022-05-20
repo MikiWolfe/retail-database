@@ -1,6 +1,7 @@
 import React from "react";
 import Spinner from "react-bootstrap/Spinner";
 import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 export default function Loading() {
   return (
@@ -9,9 +10,26 @@ export default function Loading() {
       <Modal.Title>Thank you for your patience! </Modal.Title>
 
       <Modal.Body>
-        <p>
-          Loading ... <Spinner animation="border" variant="success" />
-        </p>
+      <Button variant="primary" disabled>
+    <Spinner
+      as="span"
+      animation="border"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+    />
+    <span className="visually-hidden">Loading...</span>
+  </Button>{' '}
+  <Button variant="primary" disabled>
+    <Spinner
+      as="span"
+      animation="grow"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+    />
+    Loading...
+  </Button>
       </Modal.Body>
     </Modal.Dialog>
  </Modal>
