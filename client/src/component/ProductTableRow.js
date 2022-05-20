@@ -36,7 +36,8 @@ const ProductTableRow = (props) => {
   const onSubmit = () => {
     confirmAlert({
       title: "Confirm to delete",
-      message: "Click yes to delete this product, don't worry if it takes a little while.",
+      message:
+        "Click yes to delete this product, don't worry if it takes a little while.",
       buttons: [
         {
           label: "Yes",
@@ -52,34 +53,35 @@ const ProductTableRow = (props) => {
 
   return (
     <>
-     <div className="container">
-          {isLoading ? (
-            <Loading />
-          ) : (
-            ProductList
-          )} 
-          </div>
-    <tr>
-      <td>{_id}</td>
-      <td>{name}</td>
-      <td>{brand}</td>
-      <td>{category}</td>
-      <td>{price}</td>
-      <td>{quantity}</td>
-      <td>
-        <Link to={`/update-product/${_id}`}>
-          <Button variant="info" size="sm" disabled={isLoading}>
-            Edit{" "}
-          </Button>
-        </Link>
-        <p> OR </p>
-       
-          <Button onClick={onSubmit} disabled={isLoading} size="sm" variant="danger">
-            Delete
-          </Button>
-       
-      </td>
-    </tr>
+      <div className="container">{isLoading ? <Loading /> : ProductList}</div>
+
+      <div disabled={isLoading}>
+        <tr>
+          <td>{_id}</td>
+          <td>{name}</td>
+          <td>{brand}</td>
+          <td>{category}</td>
+          <td>{price}</td>
+          <td>{quantity}</td>
+          <td>
+            <Link to={`/update-product/${_id}`}>
+              <Button variant="info" size="sm">
+                Edit{" "}
+              </Button>
+            </Link>
+            <p> OR </p>
+
+            <Button
+              onClick={onSubmit}
+              disabled={isLoading}
+              size="sm"
+              variant="danger"
+            >
+              Delete
+            </Button>
+          </td>
+        </tr>
+      </div>
     </>
   );
 };
