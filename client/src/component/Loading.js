@@ -10,7 +10,7 @@ export default function Loading() {
 
       <Modal.Body>
         <p>
-          Loading ... <Spinner animation="border" variant="success" />{" "}
+          Loading ... <Spinner animation="border" variant="success" />
         </p>
       </Modal.Body>
     </Modal.Dialog>
