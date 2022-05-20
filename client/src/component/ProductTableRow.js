@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import Spinner from "react-bootstrap/Spinner";
+import Loading from "./Loading";
 
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -50,7 +50,8 @@ const ProductTableRow = (props) => {
     });
   };
 
-  return (
+  return ( 
+  <div>
     <tr>
       <td>{_id}</td>
       <td>{name}</td>
@@ -65,18 +66,22 @@ const ProductTableRow = (props) => {
           </Button>
         </Link>
         <p> OR </p>
-        <div className="container">
-          {isLoading ? (
-            <Spinner animation="border" variant="success" />
-          ) : (
-            ProductTableRow
-          )}
-          <Button onClick={onSubmit} disabled={isLoading} size="sm" variant="danger">
+ 
+          <Button onClick={onSubmit} size="sm" variant="danger">
             Delete
           </Button>
-        </div>
-      </td>
+         </td>
     </tr>
+           <div className="container">
+          {isLoading ? (
+            <Loading />
+          ) : (
+            ProductTableRow
+          )} 
+          </div>
+         
+
+          </div>
   );
 };
 

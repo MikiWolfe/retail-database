@@ -12,6 +12,7 @@ import Header from "./Header";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
+
 const ProductList = () => {
   const [product, setProduct] = useState([]);
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const ProductList = () => {
             buttons: [
               {
                 label: "Close",
-                onClick: () => window.location.reload(true),
+                onClick: () => navigate("/homepage")
               },
             ],
           });
