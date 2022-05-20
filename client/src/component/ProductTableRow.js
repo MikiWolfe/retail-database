@@ -76,7 +76,7 @@ const ProductTableRow = (props) => {
             disabled={isLoading}
             onClick={!isLoading ? onSubmit : null}
     >
-      {isLoading ? 'Loading…' : 'Click to load'}
+      {isLoading ? 'Deleting...' : 'Click to Delete'}
             Delete
           </Button>
 
