@@ -45,7 +45,7 @@ const ProductList = () => {
         if (res.status === 200) {
           confirmAlert({
             title: "Product restored!",
-            message: "Product successfully restored!",
+            message: "Product successfully restored! You will be redirected to the homepage.",
             buttons: [
               {
                 label: "Close",
