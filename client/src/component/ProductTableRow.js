@@ -76,7 +76,7 @@ const ProductTableRow = (props) => {
             disabled={isLoading}
             onClick={!isLoading ? onSubmit : null}
     >
-      {isLoading ?  <Spinner animation="border" variant="light" text= 'Deleting...' /> : 'Delete'}
+      {isLoading ?  <Spinner animation="border" variant="light" /> : 'Delete'}
          
           </Button>
 
