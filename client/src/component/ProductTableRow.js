@@ -50,7 +50,7 @@ const ProductTableRow = (props) => {
 
   return (
     <>
-    <div className="container">{isLoading ? <Loading /> : ProductTableRow}</div>
+    {/* <div className="container">{isLoading ? <Loading /> : ProductTableRow}</div> */}
     
       <tr disabled={isLoading}>
         <td>{_id}</td>
@@ -77,7 +77,7 @@ const ProductTableRow = (props) => {
             onClick={!isLoading ? onSubmit : null}
     >
       {isLoading ? 'Deleting...' : 'Click to Delete'}
-            Delete
+         
           </Button>
 
         </td>
