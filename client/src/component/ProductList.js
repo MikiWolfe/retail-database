@@ -86,7 +86,7 @@ const ProductList = () => {
         <div className="restore">
           <Button onClick={restore} variant="warning">
             {" "}
-            Undo last Delete{" "}
+            Undo the last deleted product{" "}
           </Button>
         </div>
       </div>
