@@ -71,11 +71,12 @@ const ProductTableRow = (props) => {
 
 
           <Button
-            onClick={onSubmit}
             size="sm"
             variant="danger"
             disabled={isLoading}
-          >
+            onClick={!isLoading ? onSubmit : null}
+    >
+      {isLoading ? 'Loading…' : 'Click to load'}
             Delete
           </Button>
 
