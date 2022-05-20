@@ -48,14 +48,13 @@ const ProductList = () => {
             buttons: [
               {
                 label: "Close",
-                onClick: () => alert("/homepage"),
+                onClick: () => window.location.reload(true),
               },
             ],
           });
         } else Promise.reject();
       })
       .catch((err) => console.log(err));
-      window.location.reload(true)
   };
 
   const DataTable = () => {

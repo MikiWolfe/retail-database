@@ -20,6 +20,14 @@
 ## Usage
 
 Keeping track of inventory for a large or small online retail store and allowing the data to be updated, added and deleted for ease.
+## Technologies Used
+- JavaScript
+- CSS
+- React
+- React Bootstrap
+- Node.js
+- Express.js
+- MongoDB 
 
 ## Licensing
 
