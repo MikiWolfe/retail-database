@@ -22,8 +22,7 @@ const ProductTableRow = (props) => {
         `https://retailer-database.herokuapp.com/product/delete-product/${_id}`
       );
       console.log("Item successfully deleted.");
-      setIsLoading(false)
-
+      setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       navigate("/homepage");
@@ -49,40 +48,36 @@ const ProductTableRow = (props) => {
   };
 
   return (
-    <>
-    {/* <div className="container">{isLoading ? <Loading /> : ProductTableRow}</div> */}
-    
-      <tr disabled={isLoading}>
-        <td>{_id}</td>
-        <td>{name}</td>
-        <td>{brand}</td>
-        <td>{category}</td>
-        <td>$ {price}</td>
-        <td>{quantity}</td>
-        <td>
-
-          <Link to={`/update-product/${_id}`}>
-            <Button variant="info" size="sm" disabled={isLoading}>
-              Edit{" "}
-            </Button>
-          </Link>
-
-          <p> OR </p>
-
-
-          <Button
-            size="sm"
-            variant="danger"
-            disabled={isLoading}
-            onClick={!isLoading ? onSubmit : null}
-    >
-      {isLoading ?  <Spinner animation="border" variant="light" /> : 'Delete'}
-         
+    <tr disabled={isLoading}>
+      <td>{_id}</td>
+      <td>{name}</td>
+      <td>{brand}</td>
+      <td>{category}</td>
+      <td>$ {price}</td>
+      <td>{quantity}</td>
+      <td>
+        <Link to={`/update-product/${_id}`}>
+          <Button variant="info" size="sm" disabled={isLoading}>
+            Edit{" "}
           </Button>
+        </Link>
 
-        </td>
-      </tr>
-    </>
+        <p> OR </p>
+
+        <Button
+          size="sm"
+          variant="danger"
+          disabled={isLoading}
+          onClick={!isLoading ? onSubmit : null}
+        >
+          {isLoading ? (
+            <Spinner animation="border" variant="light" />
+          ) : (
+            "Delete"
+          )}
+        </Button>
+      </td>
+    </tr>
   );
 };
 

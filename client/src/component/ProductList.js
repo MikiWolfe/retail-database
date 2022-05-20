@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 
 import Table from "react-bootstrap/Table";
@@ -92,9 +93,16 @@ const ProductList = () => {
           <tbody>{DataTable()}</tbody>
         </Table>
         <div className="restore">
-          <Button onClick={!isLoading ? restore : null} 
-          variant="warning" disabled={isLoading}>
-         {  isLoading ?  <Spinner animation="border" variant="light" /> : 'Undo the last deleted product'}
+          <Button
+            onClick={!isLoading ? restore : null}
+            variant="warning"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <Spinner animation="border" variant="light" />
+            ) : (
+              "Undo the last deleted product"
+            )}
           </Button>
         </div>
       </div>
