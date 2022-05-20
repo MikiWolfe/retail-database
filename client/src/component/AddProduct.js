@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import NavBar from "./bars/NavBar";
 import Header from "./Header";
 import ProductForm from "./ProductForm";
-import Button from "react-bootstrap/esm/Button";
+
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const AddProduct = () => {
   const [formValues, setFormValues] = useState({
@@ -15,6 +17,8 @@ const AddProduct = () => {
     quantity: "",
   });
 
+  const navigate = useNavigate();
+
   const onSubmit = (productObject) => {
     axios
       .post(
@@ -23,11 +27,23 @@ const AddProduct = () => {
       )
       .then((res) => {
         if (res.status === 200) {
-          alert("Product successfully added!");
+          confirmAlert({
+            title: "Product added!",
+            message: "Do you want to add another product?.",
+            buttons: [
+              {
+                label: "Yes",
+                onClick: () => navigate('/create-product'),
+              },
+              {
+                label: "No",
+                onClick: () => navigate("/product-list"),
+              },
+            ],
+          });
         } else Promise.reject();
       })
       .catch((err) => console.log(err));
-
   };
 
   return (

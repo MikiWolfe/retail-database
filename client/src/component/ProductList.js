@@ -36,6 +36,7 @@ const ProductList = () => {
       <Header />
       <NavBar />
       <div className="table-wrapper">
+        <h4>Full inventory: </h4>
         <Table striped bordered hover responsive="sm">
           <thead>
             <tr>

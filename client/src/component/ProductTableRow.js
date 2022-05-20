@@ -8,6 +8,7 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 
 const ProductTableRow = (props) => {
   const { _id, name, brand, category, price, quantity } = props.obj;
+  
   const navigate = useNavigate();
 
   const deleteProduct = () => {
@@ -26,17 +27,17 @@ const ProductTableRow = (props) => {
     // window.location.reload();
   };
 
-  const submit = () => {
+  const onSubmit = () => {
     confirmAlert({
       title: "Confirm to submit",
-      message: "Are you sure to do this.",
+      message: "Click yes to delete this product",
       buttons: [
         {
           label: "Yes",
           onClick: () => deleteProduct(),
         },
         {
-          label: "No",
+          label: "Cancel",
           onClick: () => navigate('/product-list'),
         },
       ],
@@ -60,7 +61,7 @@ const ProductTableRow = (props) => {
         </Link>
         <p> OR </p>
         <div className="container">
-          <Button onClick={submit} size="sm" variant="danger">
+          <Button onClick={onSubmit} size="sm" variant="danger">
             Delete
           </Button>
         </div>
