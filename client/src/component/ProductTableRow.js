@@ -49,7 +49,7 @@ const ProductTableRow = (props) => {
 
   return (
     <>
-      <div className="container">{isLoading ? <Loading /> : ProductList}</div>
+      <div className="container">{isLoading ? <Loading /> : ProductTableRow}</div>
 
       <tr disabled={isLoading}>
         <td>{_id}</td>
@@ -59,11 +59,13 @@ const ProductTableRow = (props) => {
         <td>$ {price}</td>
         <td>{quantity}</td>
         <td>
+
           <Link to={`/update-product/${_id}`}>
             <Button variant="info" size="sm" disabled={isLoading}>
               Edit{" "}
             </Button>
           </Link>
+
           <p> OR </p>
 
           <Button
