@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 
 export default function Loading() {
   return (
+      <Modal size="lg" keyboard={false}>
     <Modal.Dialog>
       <Modal.Title>Thank you for your patience! </Modal.Title>
 
@@ -13,5 +14,6 @@ export default function Loading() {
         </p>
       </Modal.Body>
     </Modal.Dialog>
+    </Modal>
   );
 }
