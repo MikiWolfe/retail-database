@@ -8,7 +8,7 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 
 const ProductTableRow = (props) => {
   const { _id, name, brand, category, price, quantity } = props.obj;
-  
+
   const navigate = useNavigate();
 
   const deleteProduct = () => {
@@ -19,12 +19,10 @@ const ProductTableRow = (props) => {
       )
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.status)
-          // alert("Are you sure you want to delete this product?");
+          console.log(res.status);
         } else Promise.reject();
       })
       .catch((err) => console.log(err));
-    // window.location.reload();
   };
 
   const onSubmit = () => {
@@ -38,13 +36,12 @@ const ProductTableRow = (props) => {
         },
         {
           label: "Cancel",
-          onClick: () => navigate('/product-list'),
+          onClick: () => navigate("/product-list"),
         },
       ],
     });
   };
 
- 
   return (
     <tr>
       <td>{_id}</td>

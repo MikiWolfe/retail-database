@@ -28,6 +28,17 @@ const ProductList = () => {
   const restore = () => {
     const restore = JSON.parse(window.localStorage.getItem("product"));
     console.log(restore);
+    axios
+      .post(
+        "https://retailer-database.herokuapp.com/product/create-product",
+        restore
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Product restored!");
+        } else Promise.reject();
+      })
+      .catch((err) => console.log(err));
   };
 
   const DataTable = () => {
