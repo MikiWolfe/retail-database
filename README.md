@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description:
-
+A full stack app that lets users track products in their inventory. They can add 
 ## Table of Contents:
 
 - [Description](#description)

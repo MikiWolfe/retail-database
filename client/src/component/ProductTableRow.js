@@ -49,9 +49,8 @@ const ProductTableRow = (props) => {
 
   return (
     <>
-      <div className="container">{isLoading ? <Loading /> : ProductTableRow}</div>
-
-      <tr disabled={isLoading}>
+    
+      <tr>
         <td>{_id}</td>
         <td>{name}</td>
         <td>{brand}</td>
@@ -67,6 +66,8 @@ const ProductTableRow = (props) => {
           </Link>
 
           <p> OR </p>
+          
+  <div className="container">{isLoading ? <Loading /> : ProductTableRow}</div>
 
           <Button
             onClick={onSubmit}
@@ -76,6 +77,7 @@ const ProductTableRow = (props) => {
           >
             Delete
           </Button>
+
         </td>
       </tr>
     </>
