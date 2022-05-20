@@ -25,8 +25,8 @@ router.post("/create-product", (req, res) => {
   });
 });
 
-router.get("/create-product", (req, res) => {
-  productSchema.findOne((error, data) => {
+router.get("/product-list", (req, res) => {
+  productSchema.find((error, data) => {
     if (error) {
       return error;
     } else {
