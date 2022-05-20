@@ -27,7 +27,7 @@ const ProductTableRow = (props) => {
 
   const onSubmit = () => {
     confirmAlert({
-      title: "Confirm to submit",
+      title: "Confirm to delete",
       message: "Click yes to delete this product",
       buttons: [
         {

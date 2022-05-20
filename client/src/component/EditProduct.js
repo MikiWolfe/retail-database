@@ -51,7 +51,7 @@ const EditProduct = (props) => {
           buttons: [
             {
               label: "Home",
-              onClick: () => navigate("/product-list"),
+              onClick: () => navigate("/homepage"),
             },
           ],
         })

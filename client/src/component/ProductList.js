@@ -2,12 +2,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+
 import ProductTableRow from "./ProductTableRow";
 import NavBar from "./bars/NavBar";
 import Header from "./Header";
 
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+import { useNavigate } from "react-router-dom";
+
 const ProductList = () => {
   const [product, setProduct] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios({
@@ -35,7 +41,16 @@ const ProductList = () => {
       )
       .then((res) => {
         if (res.status === 200) {
-          alert("Product restored!");
+          confirmAlert({
+            title: "Product restored!",
+            message: "Product successfully restored!",
+            button: [
+              {
+                label: "Home",
+                onClick: () => navigate("./product-list"),
+              },
+            ],
+          });
         } else Promise.reject();
       })
       .catch((err) => console.log(err));
@@ -66,12 +81,12 @@ const ProductList = () => {
           </thead>
           <tbody>{DataTable()}</tbody>
         </Table>
-      <div className = 'restore'>
-        <Button  onClick={restore} variant="warning">
-          {" "}
-          Undo last Delete{" "}
-        </Button>
-      </div>
+        <div className="restore">
+          <Button onClick={restore} variant="warning">
+            {" "}
+            Undo last Delete{" "}
+          </Button>
+        </div>
       </div>
     </div>
   );
