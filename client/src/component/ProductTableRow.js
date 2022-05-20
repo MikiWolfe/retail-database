@@ -22,7 +22,8 @@ const ProductTableRow = (props) => {
         `https://retailer-database.herokuapp.com/product/delete-product/${_id}`
       );
       console.log("Item successfully deleted.");
-  
+      setIsLoading(false)
+
     } catch (error) {
       setIsLoading(false);
       navigate("/homepage");
@@ -49,8 +50,9 @@ const ProductTableRow = (props) => {
 
   return (
     <>
+    <div className="container">{isLoading ? <Loading /> : ProductTableRow}</div>
     
-      <tr>
+      <tr disabled={isLoading}>
         <td>{_id}</td>
         <td>{name}</td>
         <td>{brand}</td>
@@ -66,8 +68,7 @@ const ProductTableRow = (props) => {
           </Link>
 
           <p> OR </p>
-          
-  <div className="container">{isLoading ? <Loading /> : ProductTableRow}</div>
+
 
           <Button
             onClick={onSubmit}

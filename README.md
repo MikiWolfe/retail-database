@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description:
-A full stack app that lets users track products in their inventory. They can add 
+A full stack app that lets users track products in their inventory. They can add, update and delete products.  They can keep track of, name, category, brand, price and quantity of the items they have in stock.  If an item is deleted on accident, they are able to undo the last deleted item.  
 ## Table of Contents:
 
 - [Description](#description)
@@ -62,9 +62,8 @@ None
 GitHub profile: https://github.com/MikiWolfe
 
 
-
 ### Link to Deployed Site
-Link: https://retail-database.mikaylabruce.repl.co/ & https://retailer-database.herokuapp.com/
+Link: https://retailer-database.herokuapp.com/ & https://retail-database.mikaylabruce.repl.co/
 
 Link to the Github repo: https://github.com/MikiWolfe/retail-database
 
