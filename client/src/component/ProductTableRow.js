@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import Loading from "./Loading";
-import ProductList from "./ProductList";
+import Spinner from "react-bootstrap/Spinner";
+
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
@@ -76,7 +76,7 @@ const ProductTableRow = (props) => {
             disabled={isLoading}
             onClick={!isLoading ? onSubmit : null}
     >
-      {isLoading ? 'Deleting...' : 'Click to Delete'}
+      {isLoading ?  <Spinner animation="border" variant="light" text= 'Deleting...' /> : 'Delete'}
          
           </Button>
 
