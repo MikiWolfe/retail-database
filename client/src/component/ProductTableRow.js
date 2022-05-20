@@ -56,7 +56,7 @@ const ProductTableRow = (props) => {
         <td>{name}</td>
         <td>{brand}</td>
         <td>{category}</td>
-        <td>{price}</td>
+        <td>$ {price}</td>
         <td>{quantity}</td>
         <td>
           <Link to={`/update-product/${_id}`}>
