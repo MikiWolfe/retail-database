@@ -30,40 +30,39 @@ router.get("/product-list", (req, res) => {
     if (error) {
       return error;
     } else {
-      console.log(data);
       res.json(data);
     }
   });
 });
 
-router.route("/update-product/:id")
-.get((req, res) => {
-  productSchema.findById(
-    req.params.id, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.json(data);
-    }
-  });
-})
-.put((req, res, next) => {
-  productSchema.findByIdAndUpdate(
-    req.params.id,
-    {
-      $set: req.body,
-    },
-    { new: true },
-    (error, data) => {
+router
+  .route("/update-product/:id")
+  .get((req, res) => {
+    productSchema.findById(req.params.id, (error, data) => {
       if (error) {
         return next(error);
       } else {
-        res.status(200).json(data);
-        console.log(data, "Product updated!");
+        res.json(data);
       }
-    }
-  );
-});
+    });
+  })
+  .put((req, res, next) => {
+    productSchema.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true },
+      (error, data) => {
+        if (error) {
+          return next(error);
+        } else {
+          res.status(200).json(data);
+          console.log(data, "Product updated!");
+        }
+      }
+    );
+  });
 
 router.delete("/delete-product/:id", (req, res) => {
   productSchema.findByIdAndRemove(req.params.id, (error, data) => {

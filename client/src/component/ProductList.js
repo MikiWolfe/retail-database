@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 import ProductTableRow from "./ProductTableRow";
 import NavBar from "./bars/NavBar";
 import Header from "./Header";
@@ -24,6 +24,11 @@ const ProductList = () => {
         console.log(error);
       });
   }, []);
+
+  const restore = () => {
+    const restore = JSON.parse(window.localStorage.getItem("product"));
+    console.log(restore);
+  };
 
   const DataTable = () => {
     return product.map((res, i) => {
@@ -51,7 +56,12 @@ const ProductList = () => {
           <tbody>{DataTable()}</tbody>
         </Table>
       </div>
-      <Button variant="warning"> Undo last Delete </Button>
+      <div d-flex justify-content-center>
+        <Button onClick={restore} variant="warning">
+          {" "}
+          Undo last Delete{" "}
+        </Button>
+      </div>
     </div>
   );
 };

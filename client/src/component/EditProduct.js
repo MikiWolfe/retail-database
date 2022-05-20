@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavBar from "./bars/NavBar";
 import Header from "./Header";
 import ProductForm from "./ProductForm";
 
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+
 const EditProduct = (props) => {
   const { id } = useParams();
-  console.log(id);
-  console.log(props);
+
+  const navigate = useNavigate();
+
   const [formValues, setFormValues] = useState({
     name: "",
     brand: "",
@@ -16,8 +20,8 @@ const EditProduct = (props) => {
     price: "",
     quantity: "",
   });
+
   const onSubmit = (productObject) => {
-    console.log(productObject);
     axios({
       method: "put",
       url: `https://retailer-database.herokuapp.com/product/update-product/${id}`,
@@ -27,13 +31,31 @@ const EditProduct = (props) => {
       },
     })
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
-          alert("Product successfully updated");
-          console.log(res);
+          confirmAlert({
+            title: "Product successfully updated!",
+            message: "Click here to go home",
+            buttons: [
+              {
+                label: "Yes",
+                onClick: () => navigate("/product-list"),
+              },
+            ],
+          });
         } else Promise.reject();
       })
-      .catch((err) => alert(err));
+      .catch((err) =>
+        confirmAlert({
+          title: "Error",
+          message: "Something went wrong!",
+          buttons: [
+            {
+              label: "Home",
+              onClick: () => navigate("/product-list"),
+            },
+          ],
+        })
+      );
   };
 
   useEffect(() => {
