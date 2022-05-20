@@ -67,8 +67,8 @@ const ProductList = () => {
           <tbody>{DataTable()}</tbody>
         </Table>
       </div>
-      <div d-flex justify-content-center>
-        <Button onClick={restore} variant="warning">
+      <div className = 'restore'>
+        <Button  onClick={restore} variant="warning">
           {" "}
           Undo last Delete{" "}
         </Button>

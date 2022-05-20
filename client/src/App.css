@@ -48,3 +48,10 @@
   margin: 1%;
   padding: 7px;
 }
+ .restore{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ }
+
