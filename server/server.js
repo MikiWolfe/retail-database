@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
 app.use(cors());
 
 app.use('/product', productRoute)
@@ -28,7 +29,7 @@ app.get("/",(req,res) => {
     res.sendFile(path.join(__dirname + "/client/build/index.html")) 
 })  
 
-
+// Listening 
 db.once('open', () => {
   app.listen(PORT, () => console.log(`🌍 Now listening on ${PORT}`));
 });

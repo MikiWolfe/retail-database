@@ -4,6 +4,7 @@ const router = express.Router();
 
 let productSchema = require("../models/Product");
 
+// READ route 
 router.get("/", (req, res) => {
   productSchema.find((error, data) => {
     if (error) {
@@ -13,7 +14,17 @@ router.get("/", (req, res) => {
     }
   });
 });
+router.get("/product-list", (req, res) => {
+  productSchema.find((error, data) => {
+    if (error) {
+      return error;
+    } else {
+      res.json(data);
+    }
+  });
+});
 
+// CREATE route 
 router.post("/create-product", (req, res) => {
   productSchema.create(req.body, (error, data) => {
     if (error) {
@@ -25,16 +36,7 @@ router.post("/create-product", (req, res) => {
   });
 });
 
-router.get("/product-list", (req, res) => {
-  productSchema.find((error, data) => {
-    if (error) {
-      return error;
-    } else {
-      res.json(data);
-    }
-  });
-});
-
+// UPDATE route
 router
   .route("/update-product/:id")
   .get((req, res) => {
@@ -63,7 +65,8 @@ router
       }
     );
   });
-
+  
+// DELETE route
 router.delete("/delete-product/:id", (req, res) => {
   productSchema.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {

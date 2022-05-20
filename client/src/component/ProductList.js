@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 
@@ -9,7 +11,6 @@ import Header from "./Header";
 
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-import { useNavigate } from "react-router-dom";
 
 const ProductList = () => {
   const [product, setProduct] = useState([]);
@@ -44,7 +45,7 @@ const ProductList = () => {
           confirmAlert({
             title: "Product restored!",
             message: "Product successfully restored!",
-            button: [
+            buttons: [
               {
                 label: "Home",
                 onClick: () => navigate("/product-list"),
