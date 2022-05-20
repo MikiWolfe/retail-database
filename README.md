@@ -25,6 +25,7 @@ Keeping track of inventory for a large or small online retail store and allowing
 - CSS
 - React
 - React Bootstrap
+- Axios 
 - Node.js
 - Express.js
 - MongoDB 
