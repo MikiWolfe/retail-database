@@ -80,7 +80,7 @@ handleShow()
             size="sm"
             variant="danger"
             disabled={isLoading}
-            onClick={!isLoading ? onSubmit : null}
+            onClick={onSubmit}
           >
             {isLoading ? <Loading /> : "Delete"}
           </Button>
