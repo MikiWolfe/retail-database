@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import Loading from "./Loading";
+
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 import Modal from "react-bootstrap/Modal";
-
-import { confirmAlert } from "react-confirm-alert";
-import "react-confirm-alert/src/react-confirm-alert.css";
 
 const ProductTableRow = (props) => {
   const { _id, name, brand, category, price, quantity } = props.obj;
@@ -34,29 +31,8 @@ const ProductTableRow = (props) => {
     }
   };
 
-  const buttonClick = () => {
-    // deleteProduct();
-    handleShow();
-  };
-
   const onSubmit = () => {
-    buttonClick();
-
-    // confirmAlert({
-    //   title: "Confirm to delete",
-    //   message:
-    //     "Click yes to delete this product. You will then be redirected to the homepage.",
-    //   buttons: [
-    //     {
-    //       label: "Yes",
-    //       onClick: () => buttonClick(),
-    //     },
-    //     {
-    //       label: "Cancel",
-    //       onClick: () => navigate("/product-list"),
-    //     },
-    //   ],
-    // });
+    handleShow();
   };
 
   return (
@@ -72,15 +48,11 @@ const ProductTableRow = (props) => {
             <Modal.Title>Confirm to delete</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            Click delete to remove this product. You will then be redirected to the
-            homepage. You will be able to undo this delete.
+            Click delete to remove this product. You will then be redirected to
+            the homepage. You will be able to undo this delete.
           </Modal.Body>
           <Modal.Footer>
-            <Button
-              size="lg"
-              variant="primary"
-              onClick={deleteProduct}
-            >
+            <Button size="lg" variant="primary" onClick={deleteProduct}>
               {isLoading ? (
                 <Spinner animation="border" variant="light" />
               ) : (
@@ -121,7 +93,6 @@ const ProductTableRow = (props) => {
             disabled={isLoading}
             onClick={onSubmit}
           >
-            {/* {show ? <Loading /> : "Delete"} */}
             Delete
           </Button>
         </td>
