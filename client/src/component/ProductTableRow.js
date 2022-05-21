@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
-import  Modal from 'react-bootstrap/Modal'
+import Modal from "react-bootstrap/Modal";
 
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -15,7 +15,7 @@ const ProductTableRow = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false)
+  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const navigate = useNavigate();
 
@@ -62,37 +62,41 @@ const ProductTableRow = (props) => {
   return (
     <>
       <div>
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header>
-          <Modal.Title>Confirm to delete</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        Click yes to delete this product. You will then be redirected to the homepage. You will be able to undo this delete.
-        </Modal.Body>
-        <Modal.Footer>
-          <Button size= 'lg' variant="primary" onClick={!isLoading ? handleClose : null}>
-          {isLoading ? (
-            <Spinner animation="border" variant="light" />
-          ) : (
-            "Delete"
-          )}
-          </Button>
-          <Button size= 'lg' variant="secondary" onClick={() => navigate("/product-list")}>
-          {isLoading ? (
-            <Spinner animation="border" variant="light" />
-          ) : (
-            "Cancel"
-          )}
-          </Button>
-
-        </Modal.Footer>
-        
-      </Modal>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header>
+            <Modal.Title>Confirm to delete</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Click delete to remove this product. You will then be redirected to the
+            homepage. You will be able to undo this delete.
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              size="lg"
+              variant="primary"
+              onClick={!isLoading ? deleteProduct : null}
+            >
+              {isLoading ? (
+                <Spinner animation="border" variant="light" />
+              ) : (
+                "Delete"
+              )}
+            </Button>
+            <Button
+              size="lg"
+              variant="secondary"
+              onClick={navigate("/product-list")}
+              disabled={isLoading}
+            >
+              Cancel
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
 
       <tr>
