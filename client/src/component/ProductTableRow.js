@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 
@@ -48,36 +49,36 @@ const ProductTableRow = (props) => {
   };
 
   return (
-    <tr disabled={isLoading}>
-      <td>{_id}</td>
-      <td>{name}</td>
-      <td>{brand}</td>
-      <td>{category}</td>
-      <td>$ {price}</td>
-      <td>{quantity}</td>
-      <td>
-        <Link to={`/update-product/${_id}`}>
-          <Button variant="info" size="sm" disabled={isLoading}>
-            Edit{" "}
+    <>
+      <div> {}</div>
+
+      <tr disabled={isLoading}>
+        <td>{_id}</td>
+        <td>{name}</td>
+        <td>{brand}</td>
+        <td>{category}</td>
+        <td>$ {price}</td>
+        <td>{quantity}</td>
+        <td>
+          <Link to={`/update-product/${_id}`}>
+            <Button variant="info" size="sm" disabled={isLoading}>
+              Edit{" "}
+            </Button>
+          </Link>
+
+          <p> OR </p>
+
+          <Button
+            size="sm"
+            variant="danger"
+            disabled={isLoading}
+            onClick={!isLoading ? onSubmit : null}
+          >
+            {isLoading ? <Loading /> : "Delete"}
           </Button>
-        </Link>
-
-        <p> OR </p>
-
-        <Button
-          size="sm"
-          variant="danger"
-          disabled={isLoading}
-          onClick={!isLoading ? onSubmit : null}
-        >
-          {isLoading ? (
-            <Spinner animation="border" variant="light" />
-          ) : (
-            "Delete"
-          )}
-        </Button>
-      </td>
-    </tr>
+        </td>
+      </tr>
+    </>
   );
 };
 
