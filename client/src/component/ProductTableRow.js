@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
+import  Modal from 'react-bootstrap/Modal'
 
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -14,6 +15,7 @@ const ProductTableRow = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false)
   const handleShow = () => setShow(true);
   const navigate = useNavigate();
 
@@ -59,7 +61,38 @@ const ProductTableRow = (props) => {
 
   return (
     <>
-      <div></div>
+      <div>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header>
+          <Modal.Title>Modal title</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          I will not close if you click outside me. Don't even try to press
+          escape key.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button size= 'lg' variant="secondary" onClick={!isLoading ? handleClose : null}>
+          {isLoading ? (
+            <Spinner animation="border" variant="light" />
+          ) : (
+            "Delete"
+          )}
+          </Button>
+        
+        </Modal.Footer>
+        
+      </Modal>
+
+
+
+
+
+      </div>
 
       <tr>
         <td>{_id}</td>
@@ -83,7 +116,7 @@ const ProductTableRow = (props) => {
             disabled={isLoading}
             onClick={onSubmit}
           >
-            {isLoading ? <Loading /> : "Delete"}
+            {show ? <Loading /> : "Delete"}
           </Button>
         </td>
       </tr>
