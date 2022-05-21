@@ -79,7 +79,7 @@ const ProductTableRow = (props) => {
             <Button
               size="lg"
               variant="primary"
-              onClick={!isLoading ? deleteProduct : null}
+              onClick={deleteProduct}
             >
               {isLoading ? (
                 <Spinner animation="border" variant="light" />
@@ -90,7 +90,7 @@ const ProductTableRow = (props) => {
             <Button
               size="lg"
               variant="secondary"
-              onClick={navigate("/product-list")}
+              onClick={handleClose}
               disabled={isLoading}
             >
               Cancel
