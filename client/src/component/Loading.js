@@ -11,9 +11,6 @@ export default function Loading() {
 
     return (
 <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch static backdrop modal
-      </Button>
 
       <Modal
         show={show}
@@ -38,7 +35,7 @@ export default function Loading() {
           </Button>
         
         </Modal.Footer>
-        
+
       </Modal>
     </>
  )
