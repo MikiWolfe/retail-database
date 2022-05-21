@@ -116,7 +116,8 @@ const ProductTableRow = (props) => {
             disabled={isLoading}
             onClick={onSubmit}
           >
-            {show ? <Loading /> : "Delete"}
+            {/* {show ? <Loading /> : "Delete"} */}
+            Delete
           </Button>
         </td>
       </tr>
