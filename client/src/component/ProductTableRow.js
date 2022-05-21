@@ -12,9 +12,9 @@ const ProductTableRow = (props) => {
   const { _id, name, brand, category, price, quantity } = props.obj;
 
   const [isLoading, setIsLoading] = useState(false);
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
-  const handleShow = () => setShow(true)
+  const handleShow = () => setShow(true);
   const navigate = useNavigate();
 
   const deleteProduct = async () => {
@@ -33,34 +33,35 @@ const ProductTableRow = (props) => {
   };
 
   const buttonClick = () => {
-deleteProduct();
-handleShow()
-
-  }
+    // deleteProduct();
+    handleShow();
+  };
 
   const onSubmit = () => {
-    confirmAlert({
-      title: "Confirm to delete",
-      message:
-        "Click yes to delete this product. You will then be redirected to the homepage.",
-      buttons: [
-        {
-          label: "Yes",
-          onClick: () => buttonClick(),
-        },
-        {
-          label: "Cancel",
-          onClick: () => navigate("/product-list"),
-        },
-      ],
-    });
+    buttonClick();
+
+    // confirmAlert({
+    //   title: "Confirm to delete",
+    //   message:
+    //     "Click yes to delete this product. You will then be redirected to the homepage.",
+    //   buttons: [
+    //     {
+    //       label: "Yes",
+    //       onClick: () => buttonClick(),
+    //     },
+    //     {
+    //       label: "Cancel",
+    //       onClick: () => navigate("/product-list"),
+    //     },
+    //   ],
+    // });
   };
 
   return (
     <>
-      <div> {}</div>
+      <div></div>
 
-      <tr disabled={isLoading}>
+      <tr>
         <td>{_id}</td>
         <td>{name}</td>
         <td>{brand}</td>

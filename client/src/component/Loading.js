@@ -11,14 +11,13 @@ export default function Loading() {
 
     return (
 <>
-
-      <Modal
+        <Modal
         show={show}
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Modal title</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -35,7 +34,7 @@ export default function Loading() {
           </Button>
         
         </Modal.Footer>
-
+        
       </Modal>
     </>
  )
