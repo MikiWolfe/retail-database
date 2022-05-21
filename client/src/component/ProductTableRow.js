@@ -69,29 +69,30 @@ const ProductTableRow = (props) => {
         keyboard={false}
       >
         <Modal.Header>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Confirm to delete</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          I will not close if you click outside me. Don't even try to press
-          escape key.
+        Click yes to delete this product. You will then be redirected to the homepage. You will be able to undo this delete.
         </Modal.Body>
         <Modal.Footer>
-          <Button size= 'lg' variant="secondary" onClick={!isLoading ? handleClose : null}>
+          <Button size= 'lg' variant="primary" onClick={!isLoading ? handleClose : null}>
           {isLoading ? (
             <Spinner animation="border" variant="light" />
           ) : (
             "Delete"
           )}
           </Button>
-        
+          <Button size= 'lg' variant="secondary" onClick={() => navigate("/product-list")}>
+          {isLoading ? (
+            <Spinner animation="border" variant="light" />
+          ) : (
+            "Cancel"
+          )}
+          </Button>
+
         </Modal.Footer>
         
       </Modal>
-
-
-
-
-
       </div>
 
       <tr>
