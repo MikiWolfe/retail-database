@@ -12,7 +12,9 @@ const ProductTableRow = (props) => {
   const { _id, name, brand, category, price, quantity } = props.obj;
 
   const [isLoading, setIsLoading] = useState(false);
+  const [show, setShow] = useState(false)
 
+  const handleShow = () => setShow(true)
   const navigate = useNavigate();
 
   const deleteProduct = async () => {
@@ -30,6 +32,12 @@ const ProductTableRow = (props) => {
     }
   };
 
+  const buttonClick = () => {
+deleteProduct();
+handleShow()
+
+  }
+
   const onSubmit = () => {
     confirmAlert({
       title: "Confirm to delete",
@@ -38,7 +46,7 @@ const ProductTableRow = (props) => {
       buttons: [
         {
           label: "Yes",
-          onClick: () => deleteProduct(),
+          onClick: () => buttonClick(),
         },
         {
           label: "Cancel",
